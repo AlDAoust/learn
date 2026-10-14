@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Learning Superpower ✨</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(160deg,#2b1055,#7597de 55%,#f6a6c1);min-height:100vh;color:#222}
+.wrap{max-width:560px;margin:0 auto;padding:16px 16px 80px}
+.card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,.25);margin-top:12px}
+h1{font-size:1.6rem;margin:.2em 0}h2{font-size:1.2rem;margin:.3em 0 .6em}
+.bar{height:10px;background:#fff4;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:#f6a6c1;width:0;transition:width .3s}
+.ptxt{font-size:.85rem;color:#fff;margin:6px 2px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;padding:13px;margin:7px 0;border:2px solid #e5e0f0;border-radius:14px;background:#faf9fd;font-size:1rem;cursor:pointer;color:#222}
+.opt.sel{border-color:#7b4bb7;background:#efe6ff;font-weight:600}
+textarea{width:100%;min-height:90px;font-size:1rem;padding:12px;border-radius:12px;border:2px solid #e5e0f0}
+input[type=range]{width:100%;accent-color:#7b4bb7;height:34px}
+.ends{display:flex;justify-content:space-between;font-size:.85rem;color:#555}.val{text-align:center;font-size:1.4rem;font-weight:700;color:#7b4bb7}
+.nav{display:flex;gap:8px;margin-top:16px}.btn{flex:1;padding:13px;border:0;border-radius:14px;font-size:1rem;font-weight:700;cursor:pointer;background:#7b4bb7;color:#fff}
+.btn.ghost{background:#eee;color:#333}.hint{color:#666;font-size:.9rem;margin:-4px 0 10px}
+.frizz{font-style:italic;color:#7b4bb7;margin-top:12px;font-size:.85rem}
+.sum dt{font-weight:700;margin-top:10px}.sum dd{margin:2px 0 0 0;color:#333}
+.reveal{text-align:center;background:linear-gradient(135deg,#efe6ff,#ffe3ee);border-radius:16px;padding:18px;margin:12px 0}.reveal .big{font-size:3rem}
+#cpy{position:fixed;right:12px;bottom:12px;z-index:9;padding:10px 14px;border:0;border-radius:22px;background:#7b4bb7;color:#fff;font-weight:700;font-size:.9rem;box-shadow:0 4px 14px rgba(0,0,0,.3);display:none}
+#toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:.9rem;opacity:0;transition:opacity .3s;z-index:10;pointer-events:none;white-space:nowrap}
+#saved{font-size:.8rem;color:#1b7f5a;font-weight:600;opacity:0;transition:opacity .3s;margin-top:8px}
+</style></head><body><div class="wrap">
+<div class="ptxt" id="ptxt"></div><div class="bar"><i id="bar"></i></div>
+<div class="card" id="card"></div></div><button id="cpy">📋 Copy answers so far</button><div id="toast">Copied! Share it or paste it to Ms. Frizzle</div>
+<script>
+// options: "text|tag" ; tags: B builder, D dreamer, S strategist, H healer
+const Q=[
+{t:"multi",q:"What makes you lose track of time?",h:"Pick any that fit.",o:["Being with horses|B","Singing or making playlists|D","Watching a great movie or musical|D","Getting lost in a fantasy romance|D","Skincare / beauty routines|H","Mixing herbs, teas or DIY products|H","Playing with numbers or money|S","Researching a side-hustle idea|S","Making or fixing something with my hands|B"]},
+{t:"text",q:"If nobody would ever see or judge it, what would you love to learn?",h:"Totally secret-garden. Anything goes. 🌿"},
+{t:"choice",q:"Where does your brain work best?",o:["Cozy in my room|D","Outside / at the barn|B","Kitchen table with people nearby|H","Somewhere new, like a café or library|S"]},
+{t:"choice",q:"Best time of day for learning stuff?",o:["Morning|S","Afternoon|B","Evening|H","Late night 🌙|D"]},
+{t:"choice",q:"Soundtrack while you learn?",o:["Music I can sing to|D","Lo-fi or instrumental|S","Total silence|S","Background show or movie|H"]},
+{t:"tot",q:"This or that?",o:["Solo, my own vibe|D","With someone nearby|H"]},
+{t:"text",q:"Check-ins with Dad (your accountability coach): what would actually feel good?",h:"How often? Text or in person? What should he ask, and what should he NOT do?"},
+{t:"text",q:"Time with Mom (brainstorming + comfort): what would you love that to look like?",h:"Walks? Tea? Big-idea chats? Just hanging out?"},
+{t:"choice",q:"What size 'chunk' feels good?",o:["One tiny thing, then done|H","One thing a day|S","A couple of things a week, my pace|D","One big project I can sink into|B"]},
+{t:"multi",q:"When something feels like too much, what helps?",h:"No wrong answers. Pick any.",o:["A nap or a reset","Music","Going outside or to the horses","Talking it through with someone","Someone shrinking it to ONE next step","Being left alone for a bit","Skincare or self-care time","Writing it out"]},
+{t:"rank",q:"Rate how much you like each format",o:["Videos","Hands-on projects","Short reads","Audio / podcasts"]},
+{t:"choice",q:"What reward feels actually worth it?",o:["Money or something I can buy|S","Extra barn / horse time|B","A treat or self-care day|H","Free time to do whatever|D","Seeing myself get really good|B"]},
+{t:"multi",q:"Pick 2–3 topics you'd want to explore (or add your own)",o:["Investing & making money grow|S","Starting a small business|S","Herbalism & natural remedies|H","Skincare science|H","Horse care, training or equine health|B","Singing & voice|D","How musicals & movies get made|D","Writing your own fantasy story|D","Nutrition & wellness|H"]},
+{t:"text",q:"Side-hustle dream: if you could start any little business, what would it be?",h:"Dream big or tiny. Both count. 💸"},
+{t:"text",q:"One skill you wish you magically had right now?",h:"Ms. Frizzle says: wishes are just experiments waiting to happen."}
+];
+const R={B:{e:"🐎",n:"The Mustang Maker",d:"You learn by doing. Put your hands on it, try it and adjust. Real projects with real results are your fuel, and the barn is basically your lab."},
+D:{e:"🦄",n:"The Friesian Dreamer",d:"Story, music and imagination are your superpower. You learn deeply when something makes you FEEL, so give yourself a soundtrack and a story."},
+S:{e:"🏇",n:"The Thoroughbred Strategist",d:"Numbers, money and plans light you up. You spot patterns and opportunities fast, so learning is a game you play to win."},
+H:{e:"🌿",n:"The Arabian Alchemist",d:"Care, wellness and how things work together are your thing. You learn best when it's calm, cozy and good for you (and others)."}};
+const KEY="cheySelfQuiz1";let S=JSON.parse(localStorage.getItem(KEY)||'{"i":-1,"a":{}}');
+const save=()=>localStorage.setItem(KEY,JSON.stringify(S));
+let svT;const saved=()=>{save();const e=document.getElementById("saved");if(e){e.style.opacity=1;clearTimeout(svT);svT=setTimeout(()=>e.style.opacity=0,1800)}};
+async function copyTxt(t){try{await navigator.clipboard.writeText(t)}catch(_){const x=document.createElement("textarea");x.value=t;document.body.appendChild(x);x.select();document.execCommand("copy");x.remove()}}
+const lab=o=>o.split("|")[0],tag=o=>o.split("|")[1];
+const card=document.getElementById("card"),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const quips=["Take chances, make mistakes, get messy!","Seatbelts, everyone!","Now THAT's science!","Bus, do your stuff!","Let's get weird with it."];
+function answered(i){const a=S.a[i];if(a==="__skip")return false;return !(a==null||a===""||(Array.isArray(a)&&!a.length&&!S.a[i+"o"]))}
+function fmt(i){const q=Q[i],a=S.a[i];if(!answered(i))return"(skipped)";
+if(q.t=="rank")return Object.entries(a).map(([k,v])=>`${k}: ${v}/5`).join("; ");
+if(q.t=="multi")return[...(a||[]).map(lab),S.a[i+"o"]?"Own: "+S.a[i+"o"]:""].filter(Boolean).join("; ");
+if(q.t=="choice"||q.t=="tot")return lab(a);return String(a)}
+function result(){const c={B:0,D:0,S:0,H:0};Q.forEach((q,i)=>{if(!answered(i))return;const a=S.a[i];
+if(q.t=="multi")a.forEach(o=>tag(o)&&c[tag(o)]++);else if(q.o&&typeof a=="string"&&tag(a))c[tag(a)]+=2;
+if(q.t=="rank"){c.B+=(a["Hands-on projects"]||0)/2;c.D+=(a["Videos"]||0)/3;c.S+=(a["Short reads"]||0)/3;c.H+=(a["Audio / podcasts"]||0)/3}});
+return R[Object.keys(c).sort((x,y)=>c[y]-c[x])[0]]}
+function partial(){const n=Math.min(S.i+1,Q.length);return `Chey's Learning Superpower Quiz (partial, through Q${n})\n\n`+Q.slice(0,n).map((q,i)=>answered(i)?`${i+1}. ${q.q}\n→ ${fmt(i)}`:null).filter(Boolean).join("\n\n")}
+function toast(){const t=document.getElementById("toast");t.style.opacity=1;setTimeout(()=>t.style.opacity=0,2200)}
+function prog(){const n=Q.length,i=Math.max(0,Math.min(S.i,n));document.getElementById("bar").style.width=(i/n*100)+"%";
+document.getElementById("ptxt").textContent=S.i<0?"~5 minutes · no wrong answers":S.i>=n?"Done! ✨":`${S.i+1} of ${n}`;}
+function render(){prog();save();window.scrollTo(0,0);document.getElementById("cpy").style.display=(S.i>=0&&S.i<Q.length)?"block":"none";
+if(S.i<0){const has=Object.keys(S.a).length;card.innerHTML=`<h1>✨ What's Your Learning Superpower?</h1><p>Hey Chey! This isn't a test. It's a field trip into how YOUR brain likes to learn, so your learning can actually fit you.</p><p>${Q.length} quick questions. Skip anything. No wrong answers. You get a little result at the end.</p><p class="hint">Your answers save on this device as you go.</p><div class="nav"><button class="btn" id="go">${has?"Keep going":"Let's go"}</button></div>${has?'<div class="nav"><button class="btn ghost" id="reset">Start over</button></div>':''}`;
+document.getElementById("go").onclick=()=>{S.i=0;render()};const r=document.getElementById("reset");if(r)r.onclick=()=>{if(confirm("Erase all answers?")){S={i:0,a:{}};render()}};return}
+if(S.i>=Q.length)return summary();
+const q=Q[S.i];let a=S.a[S.i];if(a==="__skip")a=null;let h=`<h2>${esc(q.q)}</h2>`+(q.h?`<p class="hint">${esc(q.h)}</p>`:"");
+if(q.t=="choice"||q.t=="tot")h+=q.o.map(o=>`<button class="opt ${a==o?"sel":""}" data-v="${esc(o)}">${esc(lab(o))}</button>`).join("");
+if(q.t=="multi")h+=q.o.map(o=>`<button class="opt ${(a||[]).includes(o)?"sel":""}" data-m="${esc(o)}">${esc(lab(o))}</button>`).join("")+`<textarea id="other" style="min-height:50px" placeholder="Your own…">${esc(S.a[S.i+"o"]||"")}</textarea>`;
+if(q.t=="rank")h+=q.o.map((o,k)=>{const v=(a||{})[o]??3;return `<p style="margin:14px 0 2px"><b>${esc(o)}</b>: <span id="r${k}">${"⭐".repeat(v)}</span></p><input type="range" min="1" max="5" value="${v}" data-r="${esc(o)}" data-k="${k}">`}).join("");
+if(q.t=="text")h+=`<textarea id="tx" placeholder="Type as much or as little as you want…">${esc(a||"")}</textarea>`;
+h+=`<div class="nav"><button class="btn ghost" id="back">←</button><button class="btn ghost" id="skip">Skip</button><button class="btn" id="next">${S.i==Q.length-1?"Reveal ✨":"Next →"}</button></div><div id="saved">✓ Saved on this device</div><p class="frizz">${quips[S.i%quips.length]} — Ms. Frizzle</p>`;
+card.innerHTML=h;
+card.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{S.a[S.i]=b.dataset.v;card.querySelectorAll("[data-v]").forEach(x=>x.classList.toggle("sel",x==b));saved()});
+card.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{let s=Array.isArray(S.a[S.i])?S.a[S.i]:[];s=s.includes(b.dataset.m)?s.filter(x=>x!=b.dataset.m):[...s,b.dataset.m];S.a[S.i]=s;b.classList.toggle("sel");saved()});
+const ot=document.getElementById("other");if(ot)ot.oninput=()=>{S.a[S.i+"o"]=ot.value;if(!Array.isArray(S.a[S.i]))S.a[S.i]=[];saved()};
+card.querySelectorAll("[data-r]").forEach(r=>r.oninput=()=>{if(typeof S.a[S.i]!="object"||!S.a[S.i])S.a[S.i]={};S.a[S.i][r.dataset.r]=+r.value;document.getElementById("r"+r.dataset.k).textContent="⭐".repeat(r.value);saved()});
+const tx=document.getElementById("tx");if(tx)tx.oninput=()=>{S.a[S.i]=tx.value;saved()};
+document.getElementById("back").onclick=()=>{S.i--;render()};document.getElementById("next").onclick=()=>{S.i++;render()};
+document.getElementById("skip").onclick=()=>{S.a[S.i]="__skip";S.i++;render()};}
+function summary(){const r=result();const txt=`Chey's Learning Superpower Quiz — answers\nResult: ${r.n}\n\n`+Q.map((q,i)=>`${i+1}. ${q.q}\n→ ${fmt(i)}`).join("\n\n");
+card.innerHTML=`<h1>Your result is in…</h1><div class="reveal"><div class="big">${r.e}</div><h2>${r.n}</h2><p>${r.d}</p></div><p>Thanks for being part of the experiment, Chey. Your answers will shape what you learn next, and you're in the driver's seat. 🚌</p><button class="btn" id="copy" style="width:100%;font-size:1.1rem;padding:16px">📋 Copy my answers</button><p style="text-align:center;font-weight:600;color:#7b4bb7">Share them with Mom or Dad, or paste them to Ms. Frizzle.</p><dl class="sum">${Q.map((q,i)=>`<dt>${i+1}. ${esc(q.q)}</dt><dd>${esc(fmt(i))}</dd>`).join("")}</dl><div class="nav"><button class="btn ghost" id="back">← Edit</button><button class="btn ghost" id="restart">Start over</button></div>`;
+document.getElementById("copy").onclick=async e=>{await copyTxt(txt);e.target.textContent="✅ Copied!";toast()};
+document.getElementById("back").onclick=()=>{S.i=Q.length-1;render()};document.getElementById("restart").onclick=()=>{if(confirm("Erase all answers?")){S={i:-1,a:{}};render()}};}
+document.getElementById("cpy").onclick=async()=>{await copyTxt(partial());toast()};
+render();
+</script></body></html>
