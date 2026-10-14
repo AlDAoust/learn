@@ -18,9 +18,12 @@ input[type=range]{width:100%;accent-color:#6a4c93;height:34px}
 .frizz{font-style:italic;color:#6a4c93;margin-top:12px;font-size:.9rem}
 pre{white-space:pre-wrap;background:#f6f3ff;padding:14px;border-radius:12px;font-size:.9rem;max-height:50vh;overflow:auto}
 .sum dt{font-weight:700;margin-top:10px}.sum dd{margin:2px 0 0 0;color:#333}
+#cpy{position:fixed;right:12px;bottom:12px;z-index:9;padding:10px 14px;border:0;border-radius:22px;background:#6a4c93;color:#fff;font-weight:700;font-size:.9rem;box-shadow:0 4px 14px rgba(0,0,0,.3);display:none}
+#toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:.9rem;opacity:0;transition:opacity .3s;z-index:10;pointer-events:none}
+#saved{font-size:.8rem;color:#1b7f5a;font-weight:600;opacity:0;transition:opacity .3s;margin-top:8px}.wrap{padding-bottom:70px}
 </style></head><body><div class="wrap">
 <div class="ptxt" id="ptxt"></div><div class="bar"><i id="bar"></i></div>
-<div class="card" id="card"></div></div>
+<div class="card" id="card"></div></div><button id="cpy">📋 Copy answers so far</button><div id="toast">Copied! Paste it to Ms. Frizzle</div>
 <script>
 const Q=[
 {t:"text",q:"What lights Chey up? Describe a moment she was totally in her element.",h:"Paint the picture! What was she doing, saying, building?"},
@@ -50,11 +53,16 @@ const Q=[
 ];
 const KEY="frizzleChayQuiz1";let S=JSON.parse(localStorage.getItem(KEY)||'{"i":-1,"a":{}}');
 const save=()=>localStorage.setItem(KEY,JSON.stringify(S));
+let svT;const saved=()=>{save();const e=document.getElementById("saved");if(e){e.style.opacity=1;clearTimeout(svT);svT=setTimeout(()=>e.style.opacity=0,1800)}};
+async function copyTxt(t){try{await navigator.clipboard.writeText(t)}catch(_){const x=document.createElement("textarea");x.value=t;document.body.appendChild(x);x.select();document.execCommand("copy");x.remove()}}
+function answered(i){const a=S.a[i];return !(a==null||a===""||(Array.isArray(a)&&!a.length&&!S.a[i+"o"]))}
+function partial(){const n=Math.min(S.i+1,Q.length);return `Parents' Field Guide to Chey — answers (partial, through Q${n})\n\n`+Q.slice(0,n).map((q,i)=>answered(i)?`${i+1}. ${q.q}\n→ ${fmt(i)}`:null).filter(Boolean).join("\n\n")}
+function toast(){const t=document.getElementById("toast");t.style.opacity=1;setTimeout(()=>t.style.opacity=0,2200)}
 const card=document.getElementById("card"),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const quips=["Seatbelts, everyone!","Take chances, make mistakes, get messy!","To the Magic School Bus!","Bus, do your stuff!","Now THAT's science!"];
 function prog(){const n=Q.length,i=Math.max(0,Math.min(S.i,n));document.getElementById("bar").style.width=(i/n*100)+"%";
 document.getElementById("ptxt").textContent=S.i<0?"Ready when you are":S.i>=n?"All done! 🎉":`Question ${S.i+1} of ${n}`;}
-function render(){prog();save();window.scrollTo(0,0);
+function render(){prog();save();window.scrollTo(0,0);document.getElementById("cpy").style.display=(S.i>=0&&S.i<Q.length)?"block":"none";
 if(S.i<0){card.innerHTML=`<h1>🚌 The Magic Field Guide to Chey</h1><p>Hello, explorers! Today's field trip: the most fascinating learner we know. Answer together, ${Q.length} quick questions, one at a time. There are no wrong answers, only discoveries!</p><p class="hint">Your progress saves on this device automatically.</p><div class="nav"><button class="btn" id="go">${Object.keys(S.a).length?"Continue":"Let's go!"}</button></div>${Object.keys(S.a).length?'<div class="nav"><button class="btn ghost" id="reset">Start over</button></div>':''}`;
 document.getElementById("go").onclick=()=>{S.i=Math.max(0,...Object.keys(S.a).map(Number).filter(k=>k<Q.length).map(k=>k));if(!Object.keys(S.a).length)S.i=0;render()};
 const r=document.getElementById("reset");if(r)r.onclick=()=>{if(confirm("Erase all answers?")){S={i:0,a:{}};render()}};return}
@@ -65,14 +73,14 @@ if(q.t=="multi")h+=q.o.map(o=>`<button class="opt ${(a||[]).includes(o)?"sel":""
 if(q.t=="slider"){const v=a??5;h+=`<div class="val" id="sv">${v}</div><input type="range" min="0" max="10" value="${v}" id="sl"><div class="ends"><span>${esc(q.l[0])}</span><span>${esc(q.l[1])}</span></div>`}
 if(q.t=="rank")h+=q.o.map((o,k)=>{const v=(a||{})[o]??3;return `<p style="margin:14px 0 2px"><b>${esc(o)}</b>: <span id="r${k}">${"⭐".repeat(v)}</span></p><input type="range" min="1" max="5" value="${v}" data-r="${esc(o)}" data-k="${k}">`}).join("");
 if(q.t=="text")h+=`<textarea id="tx" placeholder="Type away…">${esc(a||"")}</textarea>`;
-h+=`<div class="nav"><button class="btn ghost" id="back">← Back</button><button class="btn" id="next">${S.i==Q.length-1?"Finish 🎉":"Next →"}</button></div><p class="frizz">${quips[S.i%quips.length]} — Ms. Frizzle</p>`;
+h+=`<div class="nav"><button class="btn ghost" id="back">← Back</button><button class="btn" id="next">${S.i==Q.length-1?"Finish 🎉":"Next →"}</button></div><div id="saved">✓ Saved on this device</div><p class="frizz">${quips[S.i%quips.length]} — Ms. Frizzle</p>`;
 card.innerHTML=h;
-card.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{S.a[S.i]=b.dataset.v;card.querySelectorAll("[data-v]").forEach(x=>x.classList.toggle("sel",x==b));save()});
-card.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{let s=S.a[S.i]||[];s=s.includes(b.dataset.m)?s.filter(x=>x!=b.dataset.m):[...s,b.dataset.m];S.a[S.i]=s;b.classList.toggle("sel");save()});
-const ot=document.getElementById("other");if(ot)ot.oninput=()=>{S.a[S.i+"o"]=ot.value;save()};
-const sl=document.getElementById("sl");if(sl){if(a==null)S.a[S.i]=5;sl.oninput=()=>{S.a[S.i]=+sl.value;document.getElementById("sv").textContent=sl.value;save()}}
-card.querySelectorAll("[data-r]").forEach(r=>{S.a[S.i]=S.a[S.i]||{};if(S.a[S.i][r.dataset.r]==null)S.a[S.i][r.dataset.r]=3;r.oninput=()=>{S.a[S.i][r.dataset.r]=+r.value;document.getElementById("r"+r.dataset.k).textContent="⭐".repeat(r.value);save()}});
-const tx=document.getElementById("tx");if(tx)tx.oninput=()=>{S.a[S.i]=tx.value;save()};
+card.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{S.a[S.i]=b.dataset.v;card.querySelectorAll("[data-v]").forEach(x=>x.classList.toggle("sel",x==b));saved()});
+card.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{let s=S.a[S.i]||[];s=s.includes(b.dataset.m)?s.filter(x=>x!=b.dataset.m):[...s,b.dataset.m];S.a[S.i]=s;b.classList.toggle("sel");saved()});
+const ot=document.getElementById("other");if(ot)ot.oninput=()=>{S.a[S.i+"o"]=ot.value;saved()};
+const sl=document.getElementById("sl");if(sl){if(a==null)S.a[S.i]=5;sl.oninput=()=>{S.a[S.i]=+sl.value;document.getElementById("sv").textContent=sl.value;saved()}}
+card.querySelectorAll("[data-r]").forEach(r=>{S.a[S.i]=S.a[S.i]||{};if(S.a[S.i][r.dataset.r]==null)S.a[S.i][r.dataset.r]=3;r.oninput=()=>{S.a[S.i][r.dataset.r]=+r.value;document.getElementById("r"+r.dataset.k).textContent="⭐".repeat(r.value);saved()}});
+const tx=document.getElementById("tx");if(tx)tx.oninput=()=>{S.a[S.i]=tx.value;saved()};
 document.getElementById("back").onclick=()=>{S.i--;render()};document.getElementById("next").onclick=()=>{S.i++;render()};}
 function fmt(i){const q=Q[i],a=S.a[i];if(a==null||a===""||(Array.isArray(a)&&!a.length&&!S.a[i+"o"]))return"(skipped)";
 if(q.t=="slider")return`${a}/10 (0 = ${q.l[0]}, 10 = ${q.l[1]})`;if(q.t=="rank")return Object.entries(a).map(([k,v])=>`${k}: ${v}/5`).join("; ");
@@ -81,5 +89,6 @@ function summary(){const txt="Parents' Field Guide to Chey — answers\n\n"+Q.ma
 card.innerHTML=`<h1>🎉 Field trip complete!</h1><p>Wonderful observations, scientists! Here's everything you discovered.</p><button class="btn" id="copy" style="width:100%;font-size:1.15rem;padding:18px">📋 Copy answers</button><p style="text-align:center;font-weight:700;color:#6a4c93">Paste this back to Ms. Frizzle.</p><dl class="sum">${Q.map((q,i)=>`<dt>${i+1}. ${esc(q.q)}</dt><dd>${esc(fmt(i))}</dd>`).join("")}</dl><pre id="raw" style="display:none">${esc(txt)}</pre><div class="nav"><button class="btn ghost" id="back">← Edit answers</button><button class="btn ghost" id="restart">Start over</button></div>`;
 document.getElementById("copy").onclick=async e=>{try{await navigator.clipboard.writeText(txt)}catch(_){const t=document.createElement("textarea");t.value=txt;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}e.target.textContent="✅ Copied! Now paste it to Ms. Frizzle"};
 document.getElementById("back").onclick=()=>{S.i=Q.length-1;render()};document.getElementById("restart").onclick=()=>{if(confirm("Erase all answers?")){S={i:-1,a:{}};render()}};}
+document.getElementById("cpy").onclick=async()=>{await copyTxt(partial());toast()};
 render();
 </script></body></html>
