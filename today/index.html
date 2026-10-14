@@ -4,26 +4,68 @@
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(160deg,#2b1055,#7597de 60%,#f6a6c1);min-height:100vh;color:#222}
 .wrap{max-width:520px;margin:0 auto;padding:20px 16px 40px}.date{color:#fff;font-weight:600;opacity:.9;margin:4px 2px 10px}
 .card{background:#fff;border-radius:20px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,.25)}
-h1{font-size:1.45rem;margin:.1em 0 .4em}.why{color:#555;margin:0 0 14px}.meta{font-size:.8rem;color:#7b4bb7;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-ol{padding-left:1.2em;margin:0 0 14px}li{margin:8px 0;line-height:1.4}a.link{display:inline-block;margin-bottom:16px;color:#7b4bb7;font-weight:600;word-break:break-word}
+h1{font-size:1.4rem;margin:.15em 0 .35em}.meta{font-size:.78rem;color:#7b4bb7;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.builds{color:#444;margin:0 0 14px}.builds b{color:#2b1055}
+.ft{background:#f3eefb;border-radius:12px;padding:10px 12px;margin:0 0 14px;font-size:.95rem}.ft label{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ft input{font-size:1rem;padding:6px 8px;border:1px solid #c9b6e6;border-radius:8px}
+ol{padding-left:1.2em;margin:0 0 12px}li{margin:8px 0;line-height:1.4}
+details{background:#f7f7f7;border-radius:12px;padding:10px 12px;margin:0 0 14px}summary{font-weight:700;cursor:pointer}details p{margin:8px 0 0;line-height:1.4}
+a.link{display:block;margin:0 0 16px;color:#7b4bb7;font-weight:600;word-break:break-word}
 .btn{width:100%;padding:15px;border:0;border-radius:14px;font-size:1.05rem;font-weight:700;background:#7b4bb7;color:#fff;cursor:pointer}.btn.done{background:#1b7f5a}
+.after{margin-top:14px;display:none}.after.show{display:block}.after p{margin:0 0 8px;font-weight:600}
+.rate{display:flex;gap:8px}.rate button{flex:1;padding:12px 4px;border:2px solid #7b4bb7;background:#fff;color:#7b4bb7;border-radius:12px;font-size:.95rem;font-weight:700;cursor:pointer}
+.rate button.on{background:#7b4bb7;color:#fff}
+.note{width:100%;margin-top:12px;font-size:1rem;padding:10px;border:1px solid #ccc;border-radius:10px}
 .stats{display:flex;gap:10px;margin-top:12px}.stat{flex:1;background:#ffffffcc;border-radius:14px;padding:12px;text-align:center}.stat b{display:block;font-size:1.5rem;color:#2b1055}
+.copy{margin-top:12px;background:#2b1055}.msg{color:#fff;text-align:center;margin-top:8px;min-height:1.2em;font-weight:600}
+textarea.out{width:100%;height:160px;margin-top:8px;display:none;border-radius:10px;padding:8px;font-size:.85rem}
 .empty{text-align:center;font-size:1.2rem;padding:30px 10px}
 </style></head><body><div class="wrap"><div class="date" id="date"></div><div class="card" id="card">Loading…</div>
-<div class="stats"><div class="stat"><b id="streak">0</b>day streak</div><div class="stat"><b id="total">0</b>done total</div></div></div>
+<div class="stats"><div class="stat"><b id="streak">0</b>day streak</div><div class="stat"><b id="total">0</b>done total</div></div>
+<button class="btn copy" id="copy">Copy my week</button><div class="msg" id="msg"></div><textarea class="out" id="out" readonly></textarea></div>
 <script>
-const TZ="America/Halifax",KEY="cheyTodayDone";
+const TZ="America/Halifax",KEY="cheyTodayDone",LOG="cheyTodayLog";
 const ymd=d=>new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit"}).format(d);
-const today=ymd(new Date());let done=JSON.parse(localStorage.getItem(KEY)||"[]");
+const today=ymd(new Date());
+let done=JSON.parse(localStorage.getItem(KEY)||"[]"),log=JSON.parse(localStorage.getItem(LOG)||"{}"),tasks=[];
+const save=()=>{localStorage.setItem(KEY,JSON.stringify(done));localStorage.setItem(LOG,JSON.stringify(log))};
+const entry=d=>(log[d]=log[d]||{});
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nice=d=>new Intl.DateTimeFormat("en-CA",{timeZone:"UTC",weekday:"short",month:"short",day:"numeric"}).format(new Date(d+"T12:00:00Z"));
 document.getElementById("date").textContent=new Intl.DateTimeFormat("en-CA",{timeZone:TZ,weekday:"long",month:"long",day:"numeric"}).format(new Date());
 function stats(){document.getElementById("total").textContent=done.length;let s=0,d=new Date(today+"T12:00:00Z");
-if(!done.includes(today))d.setUTCDate(d.getUTCDate()-1);while(done.includes(d.toISOString().slice(0,10))){s++;d.setUTCDate(d.getUTCDate()-1)}
-document.getElementById("streak").textContent=s}
-fetch("tasks.json",{cache:"no-store"}).then(r=>r.json()).then(ts=>{const t=ts.find(x=>x.date===today),c=document.getElementById("card");
+if(!done.includes(today))d.setUTCDate(d.getUTCDate()-1);
+while(true){const k=d.toISOString().slice(0,10);if(d.getUTCDay()===0){d.setUTCDate(d.getUTCDate()-1);continue}if(!done.includes(k))break;s++;d.setUTCDate(d.getUTCDate()-1)}
+document.getElementById("streak").textContent=s;return s}
+function render(t){const c=document.getElementById("card");
 if(!t){c.innerHTML='<div class="empty">Nothing today. Enjoy it.</div>';return}
-c.innerHTML=`<div class="meta">${esc(t.topic)} · about ${esc(t.minutes)} min</div><h1>${esc(t.title)}</h1><p class="why">${esc(t.why)}</p><ol>${t.steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ol>${t.link?`<a class="link" href="${esc(t.link)}" target="_blank" rel="noopener">Open the link →</a>`:""}<button class="btn" id="done"></button>`;
-const b=document.getElementById("done");const up=()=>{const d=done.includes(today);b.textContent=d?"✓ Done (tap to undo)":"Done";b.classList.toggle("done",d);stats()};
-b.onclick=()=>{done=done.includes(today)?done.filter(x=>x!==today):[...done,today];localStorage.setItem(KEY,JSON.stringify(done));up()};up()})
-.catch(()=>{document.getElementById("card").innerHTML='<div class="empty">Nothing today. Enjoy it.</div>'});stats();
+const e=log[today]||{};
+c.innerHTML=`<div class="meta">${esc(t.track)} · ${esc(t.level)} · about ${esc(t.minutes)} min</div><h1>${esc(t.title)}</h1>
+<p class="builds"><b>This builds toward:</b> ${esc(t.builds)}</p>
+<div class="ft"><label>Before you start, pick a finish time: <input type="time" id="by" value="${esc(e.by||"")}"></label></div>
+<ol>${t.steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ol>
+${t.check?`<details><summary>Check yourself</summary><p>${esc(t.check)}</p></details>`:""}
+${t.link?`<a class="link" href="${esc(t.link)}" target="_blank" rel="noopener">${esc(t.linkText||"Open the link")} →</a>`:""}
+<button class="btn" id="done"></button>
+<div class="after" id="after"><p>How was it?</p><div class="rate">${["Easy","Hard","Not for me"].map(r=>`<button data-r="${r}">${r}</button>`).join("")}</div>
+<input class="note" id="note" maxlength="140" placeholder="One line: what I finished (optional)" value="${esc(e.note||"")}"></div>`;
+const b=document.getElementById("done"),a=document.getElementById("after"),rb=[...a.querySelectorAll(".rate button")];
+const up=()=>{const d=done.includes(today);b.textContent=d?"✓ Done (tap to undo)":"Done";b.classList.toggle("done",d);a.classList.toggle("show",d);
+const r=(log[today]||{}).rating;rb.forEach(x=>x.classList.toggle("on",x.dataset.r===r));stats()};
+b.onclick=()=>{done=done.includes(today)?done.filter(x=>x!==today):[...done,today];save();up()};
+rb.forEach(x=>x.onclick=()=>{const en=entry(today);en.rating=en.rating===x.dataset.r?undefined:x.dataset.r;save();up()});
+document.getElementById("note").oninput=ev=>{entry(today).note=ev.target.value;save()};
+document.getElementById("by").onchange=ev=>{entry(today).by=ev.target.value;save()};up()}
+function weekText(){const past=tasks.filter(t=>t.date<=today);if(!past.length)return "";
+const lines=[`My week: ${nice(tasks[0].date)} to ${nice(tasks[tasks.length-1].date)}`,""];let n=0;
+past.forEach(t=>{const e=log[t.date]||{},d=done.includes(t.date);if(d)n++;
+lines.push(`${nice(t.date)} | ${t.track}, ${t.level} | ${t.title}`);
+lines.push(`  ${d?"Done":"Not done"}${e.rating?" | "+e.rating:""}${e.by?" | aimed to finish by "+e.by:""}${e.note?" | "+e.note:""}`)});
+lines.push("",`Done: ${n} of ${past.length} so far | Streak: ${(s=>s+(s===1?" day":" days"))(stats())}`);return lines.join("\n")}
+document.getElementById("copy").onclick=()=>{const txt=weekText(),m=document.getElementById("msg"),o=document.getElementById("out");
+if(!txt){m.textContent="Nothing to copy yet.";return}o.value=txt;
+const fallback=()=>{o.style.display="block";o.focus();o.select();try{document.execCommand("copy");m.textContent="Copied. Paste it in a message to Mom or Dad."}catch(e){m.textContent="Select the text below and copy it."}};
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(()=>{m.textContent="Copied. Paste it in a message to Mom or Dad.";o.style.display="block"},fallback)}else fallback()};
+fetch("tasks.json",{cache:"no-store"}).then(r=>r.json()).then(ts=>{tasks=ts.sort((a,b)=>a.date<b.date?-1:1);render(ts.find(x=>x.date===today))})
+.catch(()=>render(null));stats();
 </script></body></html>

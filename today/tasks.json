@@ -1,80 +1,160 @@
 [
   {
     "date": "2026-10-15",
-    "title": "See what $1,000 turns into",
-    "why": "Compound growth is the main engine of building wealth, and it's easier to feel than to read about.",
+    "track": "Side business",
+    "level": "Level 1: Find ideas",
+    "title": "List 10 things people pay for in areas you like",
+    "builds": "Picking one idea you can make a first sale with.",
+    "minutes": 15,
     "steps": [
-      "Open the calculator and enter $1,000, $50 a month, 7% a year, 10 years.",
-      "Change it to 20 years and write down both totals.",
-      "Now try $100 a month. Which change mattered more: time or money?"
+      "Set a 12-minute timer.",
+      "Write four headings: Music, Marketing, Money, Beauty and self-care.",
+      "Example to get started: under Marketing, \"make 5 Instagram posts a month for a local shop.\"",
+      "Under each heading, write things people already pay for that you could do. Aim for 10 in total. They don't have to be good yet.",
+      "Star the 3 you'd actually enjoy doing for a month."
     ],
-    "link": "https://www.getsmarteraboutmoney.ca/calculators/compound-interest-calculator/",
-    "topic": "Investing",
-    "minutes": 15
+    "check": "You have 10 ideas, and at least one is something a person could pay you for within a month.",
+    "link": ""
   },
   {
     "date": "2026-10-16",
-    "title": "Check a horse's body condition",
-    "why": "Reading a horse's weight by eye is a core skill for anyone who cares for or leases horses.",
+    "track": "Math through finance",
+    "level": "Level 1: Percentages",
+    "title": "Work out profit, markup and margin",
+    "builds": "Pricing your own idea so it actually makes money.",
+    "minutes": 15,
     "steps": [
-      "At the barn, pick one horse you know well.",
-      "Look and feel along the neck, ribs, back and tailhead.",
-      "Score it 1 (very thin) to 9 (obese) and ask a barn staff member if they agree."
+      "Recall (1 min): without looking, write down the 3 ideas you starred yesterday.",
+      "Worked example: something costs you $2 to make and sells for $5. Profit = $3. Markup = profit ÷ cost = 3 ÷ 2 = 150%. Margin = profit ÷ price = 3 ÷ 5 = 60%.",
+      "Your turn: a custom playlist costs you $4 per client and you charge $25. Find the profit, markup and margin.",
+      "Your turn: a budget spreadsheet template costs $0.50 per sale in fees and sells for $8. Same three numbers.",
+      "Pick one of your starred ideas. Guess its cost and price, then work out the same three numbers."
     ],
-    "link": "",
-    "topic": "Horse care",
-    "minutes": 15
+    "check": "Playlist: profit $21, markup 525%, margin 84%. Template: profit $7.50, markup 1500%, margin 93.75%.",
+    "link": ""
   },
   {
     "date": "2026-10-17",
-    "title": "Read a sunscreen label",
-    "why": "Knowing what SPF and 'broad spectrum' really mean stops you from paying for marketing.",
+    "track": "Geography",
+    "level": "Level 1: One region",
+    "title": "Learn the map of South America",
+    "builds": "Reading any region by its countries, landforms and climate.",
+    "minutes": 15,
     "steps": [
-      "Grab any sunscreen or SPF moisturizer at home.",
-      "Read the guide and find the SPF, 'broad spectrum' and water-resistance claims on your bottle.",
-      "Note the price per ml. Would you buy it again?"
+      "Recall (1 min): what's the difference between markup and margin? One line each.",
+      "Play the South America countries quiz once. Write down your score and time.",
+      "Look at the landforms: the Andes mountains run down the whole west side, the Amazon basin fills the north and middle, and the Atacama Desert runs along the coast of northern Chile.",
+      "Play the quiz again and beat your first score or time.",
+      "Write one sentence with your guess: why might one side of a mountain range be wet and the other side dry? You'll check it in a later task."
     ],
-    "link": "https://www.aad.org/public/everyday-care/sun-protection/shade-clothing-sunscreen/understand-sunscreen-labels",
-    "topic": "Skincare science",
-    "minutes": 15
+    "check": "You can place Brazil, Argentina, Chile, Peru and Colombia without help. Which country is the Atacama Desert in? (Chile.)",
+    "link": "https://www.geoguessr.com/vgp/3016",
+    "linkText": "South America countries quiz (Seterra)"
   },
   {
     "date": "2026-10-19",
-    "title": "Price a tiny business idea",
-    "why": "Every business is just: what does it cost, what can you charge, and who pays.",
+    "track": "Investing",
+    "level": "Level 1: Cash flow vs. investing",
+    "title": "See what one year of profit could grow into",
+    "builds": "A rule for what you do with the money your business makes.",
+    "minutes": 15,
     "steps": [
-      "Pick one idea: herbal tea blends, playlist curation, lesson tutoring, or your own.",
-      "List what you'd need to buy and the cost per sale.",
-      "Pick a price and work out the profit on 10 sales."
+      "Recall (1 min): one of your ideas makes $21 profit per client. How many clients does it take to make $500?",
+      "The difference: a business creates cash flow, which is money that comes in because of work you do. Investing puts that money somewhere it can grow without more of your time.",
+      "Watch the short Khan Academy video on compound interest.",
+      "On paper: $500 grows 7% a year. Year 1 = 500 × 1.07 = $535. Work out years 2 and 3 yourself by multiplying by 1.07 each time.",
+      "With a calculator: 500 × 1.07^10. Write down what $500 turns into after 10 years."
     ],
-    "link": "",
-    "topic": "Small business",
-    "minutes": 20
+    "check": "Recall: 24 clients (500 ÷ 21 = 23.8, so round up). Year 2: $572.45. Year 3: $612.52. Year 10: about $983.58, so it nearly doubles.",
+    "link": "https://www.youtube.com/watch?v=-qgdMTbTJlA",
+    "linkText": "Khan Academy: Introduction to Compound Interest (video)"
   },
   {
     "date": "2026-10-20",
-    "title": "Build one plate from the Food Guide",
-    "why": "Energy for long active days comes from what's on your plate, not willpower.",
+    "track": "English",
+    "level": "Level 1: Complete sentences",
+    "title": "Fix run-on sentences in a sales message",
+    "builds": "Writing an offer that people take seriously.",
+    "minutes": 15,
     "steps": [
-      "Open the Food Guide plate and look at the three sections.",
-      "At your next meal, build a plate that roughly matches it.",
-      "Notice your energy two hours later. Better, worse or the same?"
+      "Recall (1 min): in one line, what is the difference between cash flow and investing?",
+      "Rule: a run-on is two complete thoughts stuck together with nothing between them, or with only a comma. Fix it with a period, a semicolon, or a comma plus and/but/so.",
+      "Worked example: \"I make playlists for events they fit your crowd.\" becomes \"I make playlists for events. They fit your crowd.\"",
+      "Fix these: (a) \"My templates save time, you just fill in your numbers.\" (b) \"I started last month I already have two clients.\" (c) \"Prices start at $8 they go up for custom work.\"",
+      "Write 3 sentences selling one of your starred ideas, then check each one for run-ons."
     ],
-    "link": "https://food-guide.canada.ca/en/",
-    "topic": "Nutrition",
-    "minutes": 10
+    "check": "(a) \"...save time. You just...\" or \"save time; you just...\" (b) \"...last month, and I already...\" (c) \"...start at $8. They go up...\"",
+    "link": ""
   },
   {
     "date": "2026-10-21",
-    "title": "Take a horse's vital signs",
-    "why": "Knowing a horse's normal resting numbers helps you spot when something is wrong.",
+    "track": "Science",
+    "level": "Level 1: Skin structure",
+    "title": "Learn your skin's three layers",
+    "builds": "Understanding what skin care products can and can't do.",
+    "minutes": 12,
     "steps": [
-      "With barn staff OK, count breaths for 30 seconds by watching the flank, then double it.",
-      "Find the pulse under the jaw and count for 15 seconds, then times 4.",
-      "Write both down. Ask staff what's normal for that horse."
+      "Recall (1 min): fix this sentence: \"Skin is an organ it protects your body.\"",
+      "Watch the TED-Ed video on skin (about 5 min).",
+      "Draw three stacked boxes and label them epidermis, dermis, hypodermis. Write one job next to each.",
+      "Zoom in on the back of your hand with your phone camera. Write down what you see: lines, pores, tiny hairs.",
+      "Write one question you now have about skin. Keep it, because it can become a future task."
     ],
-    "link": "",
-    "topic": "Horse care",
-    "minutes": 15
+    "check": "Recall: \"Skin is an organ. It protects your body.\" Epidermis: the outer barrier. Dermis: collagen, blood vessels, sweat glands, hair roots, nerves. Hypodermis: fat for cushioning and warmth. Skin's three jobs: protect, regulate, sense.",
+    "link": "https://www.youtube.com/watch?v=OxPlCkTKhzY",
+    "linkText": "TED-Ed: The science of skin (video)"
+  },
+  {
+    "date": "2026-10-22",
+    "track": "Side business",
+    "level": "Level 2: Choose one",
+    "title": "Score your 3 ideas with numbers",
+    "builds": "Choosing the one idea you test first.",
+    "minutes": 20,
+    "steps": [
+      "Recall (1 min): an item costs $3 and sells for $12. What's the margin?",
+      "Make a table with your 3 starred ideas as rows and these columns: start cost ($), profit per sale ($), minutes per sale, people I could ask, enjoyment (1-5).",
+      "Fill it in with rough guesses. Guesses are fine.",
+      "Profit per hour = profit per sale ÷ minutes × 60. Work it out for each idea.",
+      "Circle the idea with the best mix of profit per hour and enjoyment. Write one sentence on why."
+    ],
+    "check": "Recall: 75% ($9 ÷ $12). Example: $21 profit in 45 min = $28 an hour. You have one circled idea and a reason.",
+    "link": ""
+  },
+  {
+    "date": "2026-10-23",
+    "track": "History",
+    "level": "Level 1: Two sides of one event",
+    "title": "The Berlin Conference: who was in the room?",
+    "builds": "Judging any history story by asking who told it.",
+    "minutes": 15,
+    "steps": [
+      "Recall (1 min): name 3 South American countries and one landform from last Saturday.",
+      "Read the article (about 10 min). Skim the list of territories and focus on the other sections.",
+      "Make two columns: European powers in the room, and African people left out. Write 2 things each side might say about the new borders.",
+      "The article gives two views from historians. One says the conference sped up the carve-up of Africa. The other says the conference itself drew few real borders. Write one line on each view.",
+      "One sentence: why does it matter who was in the room?"
+    ],
+    "check": "When: Nov 1884 to Feb 1885. Who: diplomats from 14 countries. Left out: every African leader (the Sultan of Zanzibar asked to attend and was refused). About 20% of Africa was colonized before the conference and about 90% by 1890.",
+    "link": "https://www.aljazeera.com/news/2025/2/26/colonising-africa-what-happened-at-the-berlin-conference-of-1884-1885",
+    "linkText": "Al Jazeera: What happened at the Berlin Conference?"
+  },
+  {
+    "date": "2026-10-24",
+    "track": "French",
+    "level": "Level 1: Numbers and prices",
+    "title": "Count to 20 and ask a price in French",
+    "builds": "Handling prices and simple conversations in French.",
+    "minutes": 15,
+    "steps": [
+      "Recall (1 min): name the three layers of skin.",
+      "Watch the video (8 min) and say each number out loud along with it.",
+      "Cover the screen and write 1 to 20 in French. Check your spelling.",
+      "Learn two phrases: \"C'est combien ?\" (How much is it?) and \"Ça coûte douze dollars.\" (It costs twelve dollars.)",
+      "Say out loud the prices of three of your ideas, e.g. \"Ça coûte huit dollars.\" Then tap Copy my week below and send it to Mom or Dad."
+    ],
+    "check": "11 onze, 12 douze, 13 treize, 14 quatorze, 15 quinze, 16 seize, 17 dix-sept, 18 dix-huit, 19 dix-neuf, 20 vingt.",
+    "link": "https://www.youtube.com/watch?v=H2-REbL2OU0",
+    "linkText": "Learn French With Alexa: Numbers 1 to 20 (video)"
   }
 ]
