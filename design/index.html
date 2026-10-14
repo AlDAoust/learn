@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design your app</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&family=Playfair+Display:wght@600&family=Caveat:wght@600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(160deg,#2b1055,#7597de 55%,#f6a6c1);min-height:100vh;color:#222}
+.wrap{max-width:560px;margin:0 auto;padding:16px 16px 80px}.card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 30px rgba(0,0,0,.25);margin-top:12px}
+h1{font-size:1.5rem;margin:.2em 0}h2{font-size:1.15rem;margin:.2em 0 .7em}.hint{color:#666;font-size:.9rem;margin:-4px 0 10px}
+.bar{height:10px;background:#fff4;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:#f6a6c1;width:0;transition:width .3s}.ptxt{font-size:.85rem;color:#fff;margin:6px 2px;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid.one{grid-template-columns:1fr}
+.pick{border:3px solid #e5e0f0;border-radius:16px;padding:6px;background:#faf9fd;cursor:pointer;text-align:center;font-size:.8rem;color:#444;font-weight:600}
+.pick.sel{border-color:#7b4bb7;background:#efe6ff}.pick .lbl{margin-top:5px}
+.m{height:170px;border-radius:12px;padding:9px;text-align:left;overflow:hidden;font-size:9px;display:flex;flex-direction:column;gap:5px;position:relative}
+.m .t{font-size:12px;font-weight:700}.m .c{border-radius:8px;padding:6px}.m .b{border-radius:7px;padding:5px;text-align:center;font-weight:700;margin-top:auto}
+.ln{height:4px;border-radius:2px;opacity:.35;background:currentColor;margin:3px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:9px 13px;border-radius:20px;border:2px solid #e5e0f0;background:#faf9fd;cursor:pointer;font-size:.95rem}.chip.sel{border-color:#7b4bb7;background:#efe6ff;font-weight:600}
+textarea{width:100%;min-height:54px;font-size:1rem;padding:10px;border-radius:12px;border:2px solid #e5e0f0;margin-top:12px}
+.nav{display:flex;gap:8px;margin-top:14px}.btn{flex:1;padding:13px;border:0;border-radius:14px;font-size:1rem;font-weight:700;cursor:pointer;background:#7b4bb7;color:#fff}.btn.ghost{background:#eee;color:#333}
+.sum dt{font-weight:700;margin-top:10px}.sum dd{margin:2px 0 0;color:#333}
+#cpy{position:fixed;right:12px;bottom:12px;z-index:9;padding:10px 14px;border:0;border-radius:22px;background:#7b4bb7;color:#fff;font-weight:700;font-size:.9rem;box-shadow:0 4px 14px rgba(0,0,0,.3);display:none}
+#toast{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 16px;border-radius:20px;font-size:.9rem;opacity:0;transition:opacity .3s;z-index:10;pointer-events:none;white-space:nowrap}
+#saved{font-size:.8rem;color:#1b7f5a;font-weight:600;opacity:0;transition:opacity .3s;margin-top:8px}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}@keyframes conf{0%{transform:translateY(-10px);opacity:1}100%{transform:translateY(60px);opacity:0}}
+</style></head><body><div class="wrap"><div class="ptxt" id="ptxt"></div><div class="bar"><i id="bar"></i></div><div class="card" id="card"></div></div>
+<button id="cpy">📋 Copy answers so far</button><div id="toast">Copied. Paste it to Ms. Frizzle or share it.</div>
+<script>
+// mock builder
+function M(o){o=Object.assign({bg:"#f7f5fb",fg:"#222",card:"#fff",ac:"#7b4bb7",font:"system-ui",r:8,top:"",body:"",btn:"Done"},o);
+return `<div class="m" style="background:${o.bg};color:${o.fg};font-family:${o.font}">${o.top}<div class="t">Today</div>${o.body||`<div class="c" style="background:${o.card};border-radius:${o.r}px"><b>Price a tiny business idea</b><div class="ln"></div><div class="ln" style="width:70%"></div></div>`}<div class="b" style="background:${o.ac};color:#fff;border-radius:${o.r}px">${o.btn}</div></div>`}
+const task=`<b>Price a tiny business idea</b><div class="ln"></div><div class="ln" style="width:70%"></div>`;
+const ring=(p,c)=>`<div style="width:30px;height:30px;border-radius:50%;background:conic-gradient(${c} ${p}%,#ddd 0);display:grid;place-items:center"><div style="width:20px;height:20px;border-radius:50%;background:#fff"></div></div>`;
+const Q=[
+{q:"Pick the overall style",o:[
+["Minimal & calm",M({bg:"#fafafa",card:"#fff",ac:"#555",r:10,body:`<div class="c" style="background:#fff;border:1px solid #eee">${task}</div>`})],
+["Bento grid",M({bg:"#eef0f5",ac:"#3a6df0",body:`<div style="display:grid;grid-template-columns:2fr 1fr;gap:4px"><div class="c" style="background:#fff;grid-row:span 2">${task}</div><div class="c" style="background:#ffd6e0">🔥 5</div><div class="c" style="background:#d6f5e3">12 ✓</div></div>`})],
+["Cozy journal",M({bg:"#f6efe3",fg:"#4a3b2a",card:"#fffaf0",ac:"#b5835a",font:"Georgia,serif",r:4,top:`<div style="position:absolute;right:8px;top:6px;font-size:16px">🌿</div>`,body:`<div class="c" style="background:#fffaf0;border:1px dashed #c9b59a;transform:rotate(-1deg)">${task}</div>`})],
+["Bold & modern",M({bg:"#111",fg:"#fff",ac:"#ff3d7f",font:"'Space Grotesk',sans-serif",r:2,body:`<div style="font-size:15px;font-weight:700;line-height:1.1">PRICE A TINY BUSINESS IDEA</div><div class="ln"></div>`,btn:"DONE →"})]]},
+{q:"Light or dark?",o:[["Light",M({})],["Dark",M({bg:"#16131f",fg:"#eee",card:"#262035"})]]},
+{q:"Colour palette",o:[
+["Dusk",M({bg:"#2b1055",fg:"#fff",card:"#4b2a7a",ac:"#f6a6c1"})],["Sage",M({bg:"#eef3ec",fg:"#2f3e2f",card:"#fff",ac:"#6b8f71"})],
+["Blush & gold",M({bg:"#fdf0f0",fg:"#4a2c2c",card:"#fff",ac:"#c9a14a"})],["Ocean",M({bg:"#e8f4fb",fg:"#0f3550",card:"#fff",ac:"#1e88c7"})]]},
+{q:"Font",o:[["Clean sans",M({font:"system-ui"})],["Rounded",M({font:"Nunito,sans-serif",r:14})],["Elegant serif",M({font:"'Playfair Display',serif"})],["Handwritten accent",M({top:"",body:`<div style="font-family:Caveat,cursive;font-size:17px;color:#7b4bb7">you've got this</div><div class="c" style="background:#fff">${task}</div>`})]]},
+{q:"How much game?",o:[
+["None, just a checkmark",M({btn:"✓"})],
+["Streak + progress bar",M({top:`<div>🔥 5-day streak</div><div style="height:6px;background:#ddd;border-radius:3px"><div style="width:60%;height:100%;background:#7b4bb7;border-radius:3px"></div></div>`})],
+["Levels + badges",M({top:`<div>Level 4 · 🏅🥈🎖</div>`})],
+["XP + unlockables",M({top:`<div style="display:flex;justify-content:space-between"><b>⚡ 1,240 XP</b><span>🔒 new theme at 1,500</span></div>`,btn:"Done +50 XP"})]]},
+{q:"What reward feels good?",o:[
+["Money goal tracker",M({body:`<div class="c" style="background:#fff"><b>Goal: $10,000</b><div style="height:8px;background:#ddd;border-radius:4px;margin-top:4px"><div style="width:72%;height:100%;background:#2e9e5b;border-radius:4px"></div></div>72%</div>`})],
+["Collectibles",M({body:`<div class="c" style="background:#fff;font-size:18px;letter-spacing:3px">🐴💎🌙🌸<span style="opacity:.25">❔❔</span></div>`})],
+["Progress map",M({body:`<div class="c" style="background:#fff;font-size:14px">●──●──●──<b style="color:#7b4bb7">◉</b>──○──🏁</div>`})],
+["Stats",M({body:`<div class="c" style="background:#fff;display:grid;grid-template-columns:1fr 1fr;gap:3px"><div><b style="font-size:13px">23</b><br>done</div><div><b style="font-size:13px">5</b><br>streak</div><div><b style="font-size:13px">6h</b><br>learned</div><div><b style="font-size:13px">4</b><br>topics</div></div>`})]]},
+{q:"Home screen",o:[
+["Just today",M({})],
+["Today + small progress",M({top:`<div style="display:flex;gap:4px">${ring(60,"#7b4bb7")}${ring(30,"#f08")}${ring(80,"#2e9e5b")}</div>`})],
+["Dashboard",M({body:`<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px"><div class="c" style="background:#fff;grid-column:span 2">${task}</div><div class="c" style="background:#fff">🔥 5</div><div class="c" style="background:#fff">$7,200</div><div class="c" style="background:#fff">Lvl 4</div><div class="c" style="background:#fff">★ 4.5</div></div>`})]]},
+{q:"How to see progress per topic",o:[
+["Rings",M({body:`<div style="display:flex;gap:6px;justify-content:space-around;margin-top:6px">${ring(70,"#7b4bb7")}${ring(40,"#e0457b")}${ring(85,"#2e9e5b")}</div><div style="display:flex;justify-content:space-around">💰 🐴 🎤</div>`})],
+["Bars",M({body:["💰 70","🐴 40","🎤 85"].map(s=>{const[p,v]=s.split(" ");return`<div>${p}<div style="height:6px;background:#ddd;border-radius:3px"><div style="width:${v}%;height:100%;background:#7b4bb7;border-radius:3px"></div></div></div>`}).join("")})],
+["Skill tree",M({body:`<div style="text-align:center;font-size:13px;line-height:1.5">🌟<br>│<br>🟣──🟣──⚪<br>│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│<br>🟣&nbsp;&nbsp;&nbsp;&nbsp;⚪</div>`})],
+["Journal timeline",M({body:`<div style="border-left:2px solid #7b4bb7;padding-left:6px"><div><b>Oct 15</b> Compound growth ✓</div><div><b>Oct 16</b> Horse body score ✓</div><div><b>Oct 18</b> Recorded a song ✓</div></div>`})]]},
+{q:"How you'd rate a task",o:[
+["Emoji",M({body:`<div class="c" style="background:#fff">How was it?<div style="font-size:18px;display:flex;justify-content:space-around">😩😐🙂😍</div></div>`})],
+["Words",M({body:`<div class="c" style="background:#fff">How was it?<div style="display:flex;gap:3px;margin-top:4px">${["Meh","OK","Good","Loved it"].map(w=>`<span style="border:1px solid #ccc;border-radius:6px;padding:2px 4px">${w}</span>`).join("")}</div></div>`})],
+["Slider",M({body:`<div class="c" style="background:#fff">How was it?<div style="height:6px;background:#ddd;border-radius:3px;margin:10px 0;position:relative"><div style="position:absolute;left:65%;top:-5px;width:16px;height:16px;border-radius:50%;background:#7b4bb7"></div></div></div>`})]]},
+{q:"Theme or vibe",chips:["Music 🎵","Nature 🌿","Celestial 🌙","Cottagecore 🍄","Luxury ✨","Horses 🐴","Fantasy 🗡","Ocean 🌊","Minimal ⬜","Retro 📼"],h:"Pick any, or describe your own below."},
+{q:"Sounds and animations",o:[
+["None",M({btn:"Done"})],
+["Subtle",M({btn:`<span style="display:inline-block;animation:pop 1.6s infinite">✓ Done</span>`})],
+["Fun",M({top:`<div style="position:absolute;inset:0;pointer-events:none">${[10,30,50,70,85].map((x,i)=>`<span style="position:absolute;left:${x}%;top:20%;animation:conf 1.5s ${i*.25}s infinite">${"🎉✨🌸⭐💜"[i]||"✨"}</span>`).join("")}</div>`,btn:"🎉 Done! 🔊"})]]},
+{q:"Name your app",text:true,h:"Anything goes. Then: anything else you want it to do?"}
+];
+const KEY="cheyDesign1";let S=JSON.parse(localStorage.getItem(KEY)||'{"i":-1,"a":{},"n":{}}');S.n=S.n||{};
+const save=()=>localStorage.setItem(KEY,JSON.stringify(S));let svT;
+const saved=()=>{save();const e=document.getElementById("saved");if(e){e.style.opacity=1;clearTimeout(svT);svT=setTimeout(()=>e.style.opacity=0,1800)}};
+async function copyTxt(t){try{await navigator.clipboard.writeText(t)}catch(_){const x=document.createElement("textarea");x.value=t;document.body.appendChild(x);x.select();document.execCommand("copy");x.remove()}}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));const card=document.getElementById("card");
+function fmt(i){let a=S.a[i];a=Array.isArray(a)?a.join(", "):a;const n=S.n[i];const parts=[a,n?(Q[i].text?"":"Note: ")+n:""].filter(Boolean);return parts.length?parts.join(" | "):"(skipped)"}
+const has=i=>fmt(i)!="(skipped)";
+function txt(n,partial){return `Chey's app design answers${partial?` (partial, through Q${n})`:""}\n\n`+Q.slice(0,n).map((q,i)=>(!partial||has(i))?`${i+1}. ${q.q}\n→ ${fmt(i)}`:null).filter(Boolean).join("\n\n")}
+function toast(){const t=document.getElementById("toast");t.style.opacity=1;setTimeout(()=>t.style.opacity=0,2200)}
+function render(){const n=Q.length;document.getElementById("bar").style.width=(Math.max(0,Math.min(S.i,n))/n*100)+"%";
+document.getElementById("ptxt").textContent=S.i<0?`${n} quick screens`:S.i>=n?"Done":`${S.i+1} of ${n}`;
+document.getElementById("cpy").style.display=S.i>=0&&S.i<n?"block":"none";save();scrollTo(0,0);
+if(S.i<0){const h=Object.keys(S.a).length+Object.keys(S.n).length;card.innerHTML=`<h1>Design your app</h1><p>Your daily learning app is getting built. You decide how it looks and feels.</p><p>${n} screens. Tap the one you like. Skip anything.</p><div class="nav"><button class="btn" id="go">${h?"Keep going":"Start"}</button></div>${h?'<div class="nav"><button class="btn ghost" id="rs">Start over</button></div>':""}`;
+go.onclick=()=>{S.i=0;render()};if(window.rs)rs.onclick=()=>{if(confirm("Erase all answers?")){S={i:0,a:{},n:{}};render()}};return}
+if(S.i>=n){const t=txt(n);card.innerHTML=`<h1>Done. Nice work.</h1><p>Here's what you picked.</p><button class="btn" id="cp" style="width:100%;padding:16px">📋 Copy my answers</button><p style="text-align:center;font-weight:600;color:#7b4bb7">Share them with Mom or Dad, or paste them to Ms. Frizzle.</p><dl class="sum">${Q.map((q,i)=>`<dt>${i+1}. ${esc(q.q)}</dt><dd>${esc(fmt(i))}</dd>`).join("")}</dl><div class="nav"><button class="btn ghost" id="bk">← Edit</button><button class="btn ghost" id="rs">Start over</button></div>`;
+cp.onclick=async e=>{await copyTxt(t);e.target.textContent="✅ Copied";toast()};bk.onclick=()=>{S.i=n-1;render()};rs.onclick=()=>{if(confirm("Erase all answers?")){S={i:-1,a:{},n:{}};render()}};return}
+const q=Q[S.i],a=S.a[S.i];let h=`<h2>${esc(q.q)}</h2>`+(q.h?`<p class="hint">${esc(q.h)}</p>`:"");
+if(q.o)h+=`<div class="grid">`+q.o.map(([l,m])=>`<div class="pick ${a==l?"sel":""}" data-v="${esc(l)}">${m}<div class="lbl">${esc(l)}</div></div>`).join("")+"</div>";
+if(q.chips)h+=`<div class="chips">`+q.chips.map(c=>`<span class="chip ${(a||[]).includes(c)?"sel":""}" data-c="${esc(c)}">${esc(c)}</span>`).join("")+"</div>";
+h+=`<textarea id="nt" placeholder="${q.text?"App name… and anything else you want it to do":"Optional: anything to add?"}" ${q.text?'style="min-height:110px"':""}>${esc(S.n[S.i]||"")}</textarea>`;
+h+=`<div class="nav"><button class="btn ghost" id="bk">←</button><button class="btn ghost" id="sk">Skip</button><button class="btn" id="nx">${S.i==n-1?"Finish":"Next →"}</button></div><div id="saved">✓ Saved on this device</div>`;
+card.innerHTML=h;
+card.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{S.a[S.i]=b.dataset.v;card.querySelectorAll("[data-v]").forEach(x=>x.classList.toggle("sel",x==b));saved()});
+card.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{let s=S.a[S.i]||[];s=s.includes(b.dataset.c)?s.filter(x=>x!=b.dataset.c):[...s,b.dataset.c];S.a[S.i]=s;b.classList.toggle("sel");saved()});
+nt.oninput=()=>{S.n[S.i]=nt.value;saved()};bk.onclick=()=>{S.i--;render()};nx.onclick=()=>{S.i++;render()};sk.onclick=()=>{S.i++;render()};}
+cpy.onclick=async()=>{await copyTxt(txt(Math.min(S.i+1,Q.length),true));toast()};render();
+</script></body></html>
