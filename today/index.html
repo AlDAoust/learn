@@ -45,7 +45,8 @@ c.innerHTML=`<div class="meta">${esc(t.track)} · ${esc(t.level)} · about ${esc
 <div class="ft"><label>Before you start, pick a finish time: <input type="time" id="by" value="${esc(e.by||"")}"></label></div>
 <ol>${t.steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ol>
 ${t.check?`<details><summary>Check yourself</summary><p>${esc(t.check)}</p></details>`:""}
-${t.link?`<a class="link" href="${esc(t.link)}" target="_blank" rel="noopener">${esc(t.linkText||"Open the link")} →</a>`:""}
+${t.small?`<p class="builds"><b>Short on energy? 5-minute version:</b> ${esc(t.small)}</p>`:""}
+${(t.resources||[]).map(r=>`<a class="link" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.text)} →</a>`).join("")}
 <button class="btn" id="done"></button>
 <div class="after" id="after"><p>How was it?</p><div class="rate">${["Easy","Hard","Not for me"].map(r=>`<button data-r="${r}">${r}</button>`).join("")}</div>
 <input class="note" id="note" maxlength="140" placeholder="One line: what I finished (optional)" value="${esc(e.note||"")}"></div>`;
@@ -66,6 +67,6 @@ document.getElementById("copy").onclick=()=>{const txt=weekText(),m=document.get
 if(!txt){m.textContent="Nothing to copy yet.";return}o.value=txt;
 const fallback=()=>{o.style.display="block";o.focus();o.select();try{document.execCommand("copy");m.textContent="Copied. Paste it in a message to Mom or Dad."}catch(e){m.textContent="Select the text below and copy it."}};
 if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(()=>{m.textContent="Copied. Paste it in a message to Mom or Dad.";o.style.display="block"},fallback)}else fallback()};
-fetch("tasks.json",{cache:"no-store"}).then(r=>r.json()).then(ts=>{tasks=ts.sort((a,b)=>a.date<b.date?-1:1);render(ts.find(x=>x.date===today))})
+fetch("tasks.json",{cache:"no-store"}).then(r=>r.json()).then(ts=>{tasks=ts.sort((a,b)=>a.date<b.date?-1:1);const t0=ts.find(x=>x.date===today);if(t0)render(t0);else{const nx=tasks.find(x=>x.date>today);if(nx&&today<tasks[0].date){render(null);document.getElementById("card").innerHTML=`<div class="meta">Starts ${esc(nice(nx.date))}</div><h1>${esc(nx.title)}</h1><p class="builds">Your first task opens here on ${esc(nice(nx.date))}.</p>`}else render(null)}})
 .catch(()=>render(null));stats();
 </script></body></html>

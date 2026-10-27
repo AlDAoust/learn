@@ -1,40 +1,56 @@
 [
   {
-    "date": "2026-10-15",
+    "date": "2026-10-28",
     "track": "Side business",
     "level": "Level 1: Find ideas",
     "title": "List 10 things people pay for in areas you like",
     "builds": "Picking one idea you can make a first sale with.",
-    "minutes": 15,
+    "minutes": 20,
     "steps": [
-      "Set a 12-minute timer.",
+      "Pick your finish time above, then set a 15-minute timer.",
       "Write four headings: Music, Marketing, Money, Beauty and self-care.",
-      "Example to get started: under Marketing, \"make 5 Instagram posts a month for a local shop.\"",
-      "Under each heading, write things people already pay for that you could do. Aim for 10 in total. They don't have to be good yet.",
+      "Example: under Marketing, \"make 5 Instagram posts a month for a local shop.\"",
+      "Under the headings, write things people already pay for that you could do. Aim for 10. They don't have to be good yet.",
       "Star the 3 you'd actually enjoy doing for a month."
     ],
+    "small": "Write 3 ideas, one line each, and star your favourite.",
     "check": "You have 10 ideas, and at least one is something a person could pay you for within a month.",
-    "link": ""
+    "resources": [
+      {
+        "url": "https://www.shopify.com/blog/side-hustle-ideas",
+        "text": "Side hustle ideas (Shopify article)"
+      }
+    ]
   },
   {
-    "date": "2026-10-16",
+    "date": "2026-10-29",
     "track": "Math through finance",
     "level": "Level 1: Percentages",
     "title": "Work out profit, markup and margin",
     "builds": "Pricing your own idea so it actually makes money.",
-    "minutes": 15,
+    "minutes": 20,
     "steps": [
-      "Recall (1 min): without looking, write down the 3 ideas you starred yesterday.",
-      "Worked example: something costs you $2 to make and sells for $5. Profit = $3. Markup = profit ÷ cost = 3 ÷ 2 = 150%. Margin = profit ÷ price = 3 ÷ 5 = 60%.",
-      "Your turn: a custom playlist costs you $4 per client and you charge $25. Find the profit, markup and margin.",
-      "Your turn: a budget spreadsheet template costs $0.50 per sale in fees and sells for $8. Same three numbers.",
-      "Pick one of your starred ideas. Guess its cost and price, then work out the same three numbers."
+      "Recall (1 min): without looking, write the 3 ideas you starred yesterday.",
+      "Worked example: it costs $2 to make and sells for $5. Profit = $3. Markup = profit ÷ cost = 3 ÷ 2 = 150%. Margin = profit ÷ price = 3 ÷ 5 = 60%.",
+      "Your turn: a custom playlist costs you $4 per client and you charge $25. Find profit, markup and margin.",
+      "Your turn: a budget template costs $0.50 per sale in fees and sells for $8. Same three numbers.",
+      "Guess the cost and price for one of your starred ideas and work out the same three numbers."
     ],
+    "small": "Do only the playlist problem.",
     "check": "Playlist: profit $21, markup 525%, margin 84%. Template: profit $7.50, markup 1500%, margin 93.75%.",
-    "link": ""
+    "resources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Markup_(business)",
+        "text": "Markup vs. margin, explained (Wikipedia)"
+      },
+      {
+        "url": "https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-prop-topic/cc-6th-percent-problems/v/finding-percentages-example",
+        "text": "Finding percentages (Khan Academy video)"
+      }
+    ]
   },
   {
-    "date": "2026-10-17",
+    "date": "2026-10-30",
     "track": "Geography",
     "level": "Level 1: One region",
     "title": "Learn the map of South America",
@@ -43,118 +59,199 @@
     "steps": [
       "Recall (1 min): what's the difference between markup and margin? One line each.",
       "Play the South America countries quiz once. Write down your score and time.",
-      "Look at the landforms: the Andes mountains run down the whole west side, the Amazon basin fills the north and middle, and the Atacama Desert runs along the coast of northern Chile.",
+      "Look at the landforms: the Andes run down the whole west side, the Amazon basin fills the north and middle, and the Atacama Desert runs along the coast of northern Chile.",
       "Play the quiz again and beat your first score or time.",
-      "Write one sentence with your guess: why might one side of a mountain range be wet and the other side dry? You'll check it in a later task."
+      "Write one sentence with your guess: why might one side of a mountain range be wet and the other dry? You'll check it next Wednesday."
     ],
-    "check": "You can place Brazil, Argentina, Chile, Peru and Colombia without help. Which country is the Atacama Desert in? (Chile.)",
-    "link": "https://www.geoguessr.com/vgp/3016",
-    "linkText": "South America countries quiz (Seterra)"
+    "small": "Play the quiz once and write your score.",
+    "check": "You can place Brazil, Argentina, Chile, Peru and Colombia without help. The Atacama is in Chile.",
+    "resources": [
+      {
+        "url": "https://www.geoguessr.com/vgp/3016",
+        "text": "South America countries quiz (Seterra)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Geography_of_South_America",
+        "text": "Geography of South America (Wikipedia)"
+      }
+    ]
   },
   {
-    "date": "2026-10-19",
+    "date": "2026-10-31",
     "track": "Investing",
     "level": "Level 1: Cash flow vs. investing",
-    "title": "See what one year of profit could grow into",
-    "builds": "A rule for what you do with the money your business makes.",
-    "minutes": 15,
+    "title": "Cash flow vs. money that grows on its own",
+    "builds": "Knowing what to do with the money your side business makes.",
+    "minutes": 25,
     "steps": [
-      "Recall (1 min): one of your ideas makes $21 profit per client. How many clients does it take to make $500?",
-      "The difference: a business creates cash flow, which is money that comes in because of work you do. Investing puts that money somewhere it can grow without more of your time.",
-      "Watch the short Khan Academy video on compound interest.",
-      "On paper: $500 grows 7% a year. Year 1 = 500 × 1.07 = $535. Work out years 2 and 3 yourself by multiplying by 1.07 each time.",
-      "With a calculator: 500 × 1.07^10. Write down what $500 turns into after 10 years."
+      "Recall (1 min): name 3 countries on the west side of South America.",
+      "Read this: cash flow is money that comes in because you did work (a sale, a shift at the barn). Investing is putting money somewhere it can grow without your time.",
+      "Watch the compound interest video (about 2 min).",
+      "By hand: $100 grows 10% a year. Year 1 = $110. Work out years 2, 3, 4 and 5. Each year, add 10% of the new total.",
+      "Write one line: if your business made $200, how much would you keep for spending and how much would you invest? There's no wrong answer yet."
     ],
-    "check": "Recall: 24 clients (500 ÷ 21 = 23.8, so round up). Year 2: $572.45. Year 3: $612.52. Year 10: about $983.58, so it nearly doubles.",
-    "link": "https://www.youtube.com/watch?v=-qgdMTbTJlA",
-    "linkText": "Khan Academy: Introduction to Compound Interest (video)"
+    "small": "Write one sentence on how cash flow and investing are different.",
+    "check": "Year 2 $121, year 3 $133.10, year 4 $146.41, year 5 $161.05.",
+    "resources": [
+      {
+        "url": "https://www.youtube.com/watch?v=wf91rEGw88Q",
+        "text": "What is compound interest? (Investopedia video)"
+      },
+      {
+        "url": "https://www.investopedia.com/terms/c/compoundinterest.asp",
+        "text": "Compound interest (Investopedia article)"
+      }
+    ]
   },
   {
-    "date": "2026-10-20",
-    "track": "English",
-    "level": "Level 1: Complete sentences",
-    "title": "Fix run-on sentences in a sales message",
-    "builds": "Writing an offer that people take seriously.",
+    "date": "2026-11-02",
+    "track": "English grammar",
+    "level": "Level 1: Full sentences",
+    "title": "Fix sentence fragments",
+    "builds": "Writing an offer and messages that sound clear and professional.",
     "minutes": 15,
     "steps": [
-      "Recall (1 min): in one line, what is the difference between cash flow and investing?",
-      "Rule: a run-on is two complete thoughts stuck together with nothing between them, or with only a comma. Fix it with a period, a semicolon, or a comma plus and/but/so.",
-      "Worked example: \"I make playlists for events they fit your crowd.\" becomes \"I make playlists for events. They fit your crowd.\"",
-      "Fix these: (a) \"My templates save time, you just fill in your numbers.\" (b) \"I started last month I already have two clients.\" (c) \"Prices start at $8 they go up for custom work.\"",
-      "Write 3 sentences selling one of your starred ideas, then check each one for run-ons."
+      "Recall (1 min): what does compound interest mean? One line.",
+      "A full sentence needs a who (subject) and a does what (verb), and it has to make sense alone. \"Because I love music.\" is a fragment. \"I made playlists because I love music.\" is a full sentence.",
+      "Read the Purdue page on fragments (5 min).",
+      "Fix these: 1) \"Sold three playlists last week.\" 2) \"When the shop opens.\" 3) \"Ideas for a budget template.\"",
+      "Write 2 full sentences describing one of your starred business ideas."
     ],
-    "check": "(a) \"...save time. You just...\" or \"save time; you just...\" (b) \"...last month, and I already...\" (c) \"...start at $8. They go up...\"",
-    "link": ""
+    "small": "Fix just fragment number 1.",
+    "check": "Sample fixes: 1) I sold three playlists last week. 2) I'll go when the shop opens. 3) I have ideas for a budget template.",
+    "resources": [
+      {
+        "url": "https://owl.purdue.edu/owl/general_writing/mechanics/sentence_fragments.html",
+        "text": "Sentence fragments (Purdue OWL)"
+      },
+      {
+        "url": "https://www.grammarly.com/blog/sentences/sentence-fragment/",
+        "text": "What is a sentence fragment? (Grammarly)"
+      }
+    ]
   },
   {
-    "date": "2026-10-21",
+    "date": "2026-11-03",
+    "track": "History",
+    "level": "Level 1: Two sides of one event",
+    "title": "The Spanish arrival in Peru: two points of view",
+    "builds": "Seeing that history depends on who tells it.",
+    "minutes": 25,
+    "steps": [
+      "Recall (1 min): which mountain range runs down the west of South America?",
+      "Skim the Inca Empire page: how big it was, its roads, and how it ran without money.",
+      "Skim the Spanish conquest page: what happened in 1532 at Cajamarca.",
+      "Make two columns: an Inca family and a Spanish soldier. For each, write what they wanted, what they feared, and how they'd describe 1532.",
+      "Write one sentence: why might these two stories sound so different?"
+    ],
+    "small": "Write one line for each side: how would they each describe 1532?",
+    "check": "Your two columns don't agree, and your last sentence explains why (different goals, losses, or who wrote it down).",
+    "resources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Inca_Empire",
+        "text": "Inca Empire (Wikipedia)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Inca_Empire",
+        "text": "Spanish conquest of the Inca Empire (Wikipedia)"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-04",
     "track": "Science",
-    "level": "Level 1: Skin structure",
-    "title": "Learn your skin's three layers",
-    "builds": "Understanding what skin care products can and can't do.",
-    "minutes": 12,
+    "level": "Level 1: Observe and explain",
+    "title": "Why one side of a mountain is dry",
+    "builds": "Explaining climate with cause and effect.",
+    "minutes": 15,
     "steps": [
-      "Recall (1 min): fix this sentence: \"Skin is an organ it protects your body.\"",
-      "Watch the TED-Ed video on skin (about 5 min).",
-      "Draw three stacked boxes and label them epidermis, dermis, hypodermis. Write one job next to each.",
-      "Zoom in on the back of your hand with your phone camera. Write down what you see: lines, pores, tiny hairs.",
-      "Write one question you now have about skin. Keep it, because it can become a future task."
+      "Find the guess you wrote on Oct 30 about wet and dry mountain sides.",
+      "Read the rain shadow page (5 min).",
+      "Draw it: ocean, wind, mountain. Show air rising, cooling, raining on one side, and dry air going down the other side.",
+      "Check your Oct 30 guess: right, partly right, or wrong? Write one line.",
+      "Tonight in a hot shower: watch the cold mirror. Write one line on how that's like a cloud forming."
     ],
-    "check": "Recall: \"Skin is an organ. It protects your body.\" Epidermis: the outer barrier. Dermis: collagen, blood vessels, sweat glands, hair roots, nerves. Hypodermis: fat for cushioning and warmth. Skin's three jobs: protect, regulate, sense.",
-    "link": "https://www.youtube.com/watch?v=OxPlCkTKhzY",
-    "linkText": "TED-Ed: The science of skin (video)"
+    "small": "Draw the mountain picture only.",
+    "check": "Air rises up the mountain, cools, and drops its water as rain. It's dry by the time it comes down the far side. That's part of why the Atacama is so dry.",
+    "resources": [
+      {
+        "url": "https://education.nationalgeographic.org/resource/rain-shadow/",
+        "text": "Rain shadow (National Geographic Education)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Atacama_Desert",
+        "text": "Atacama Desert (Wikipedia)"
+      }
+    ]
   },
   {
-    "date": "2026-10-22",
+    "date": "2026-11-05",
     "track": "Side business",
     "level": "Level 2: Choose one",
     "title": "Score your 3 ideas with numbers",
-    "builds": "Choosing the one idea you test first.",
-    "minutes": 20,
+    "builds": "Picking the one idea you'll test with real people.",
+    "minutes": 25,
     "steps": [
-      "Recall (1 min): an item costs $3 and sells for $12. What's the margin?",
-      "Make a table with your 3 starred ideas as rows and these columns: start cost ($), profit per sale ($), minutes per sale, people I could ask, enjoyment (1-5).",
-      "Fill it in with rough guesses. Guesses are fine.",
-      "Profit per hour = profit per sale ÷ minutes × 60. Work it out for each idea.",
-      "Circle the idea with the best mix of profit per hour and enjoyment. Write one sentence on why."
+      "Recall (1 min): margin = profit ÷ ___?",
+      "Make a table with your 3 starred ideas as rows.",
+      "Columns: cost per sale, price, profit per sale, hours per sale, profit per hour, people you could ask, enjoyment (1 to 5).",
+      "Profit per hour = profit per sale ÷ hours. Example: $21 profit in 1.5 hours = $14 an hour.",
+      "Circle the winner. Write one line on why."
     ],
-    "check": "Recall: 75% ($9 ÷ $12). Example: $21 profit in 45 min = $28 an hour. You have one circled idea and a reason.",
-    "link": ""
+    "small": "Do the table for just your top 2 ideas.",
+    "check": "Every row has a profit per hour, and you've picked one idea.",
+    "resources": [
+      {
+        "url": "https://www.investopedia.com/terms/p/profitmargin.asp",
+        "text": "Profit margin (Investopedia)"
+      }
+    ]
   },
   {
-    "date": "2026-10-23",
-    "track": "History",
-    "level": "Level 1: Two sides of one event",
-    "title": "The Berlin Conference: who was in the room?",
-    "builds": "Judging any history story by asking who told it.",
+    "date": "2026-11-06",
+    "track": "Math through finance",
+    "level": "Level 1: Percentages",
+    "title": "Discounts and percent change",
+    "builds": "Running sales and tracking whether you're growing.",
     "minutes": 15,
     "steps": [
-      "Recall (1 min): name 3 South American countries and one landform from last Saturday.",
-      "Read the article (about 10 min). Skim the list of territories and focus on the other sections.",
-      "Make two columns: European powers in the room, and African people left out. Write 2 things each side might say about the new borders.",
-      "The article gives two views from historians. One says the conference sped up the carve-up of Africa. The other says the conference itself drew few real borders. Write one line on each view.",
-      "One sentence: why does it matter who was in the room?"
+      "Recall (1 min): what's the profit per hour for your winning idea?",
+      "Worked example: a $25 playlist at 20% off. 20% of 25 = $5, so the price is $20.",
+      "Percent change = (new − old) ÷ old. Sales go from 4 to 6: (6 − 4) ÷ 4 = 50% up.",
+      "Your turn: 1) An $8 template at 25% off. 2) Barn pay goes from $60 to $75 a week. Percent change? 3) Followers go from 200 to 180. Percent change?",
+      "Watch the Khan video if any of these felt shaky."
     ],
-    "check": "When: Nov 1884 to Feb 1885. Who: diplomats from 14 countries. Left out: every African leader (the Sultan of Zanzibar asked to attend and was refused). About 20% of Africa was colonized before the conference and about 90% by 1890.",
-    "link": "https://www.aljazeera.com/news/2025/2/26/colonising-africa-what-happened-at-the-berlin-conference-of-1884-1885",
-    "linkText": "Al Jazeera: What happened at the Berlin Conference?"
+    "small": "Do problem 1 only.",
+    "check": "1) $6. 2) 25% up. 3) 10% down.",
+    "resources": [
+      {
+        "url": "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-ratio-proportion/7th-percent-word-problems/v/percent-word-problems-tax-and-discount",
+        "text": "Tax and discount problems (Khan Academy video)"
+      }
+    ]
   },
   {
-    "date": "2026-10-24",
-    "track": "French",
-    "level": "Level 1: Numbers and prices",
-    "title": "Count to 20 and ask a price in French",
-    "builds": "Handling prices and simple conversations in French.",
+    "date": "2026-11-07",
+    "track": "Follow-through",
+    "level": "Level 1: Look back",
+    "title": "Your first look-back",
+    "builds": "Seeing your own progress and setting your next step.",
     "minutes": 15,
     "steps": [
-      "Recall (1 min): name the three layers of skin.",
-      "Watch the video (8 min) and say each number out loud along with it.",
-      "Cover the screen and write 1 to 20 in French. Check your spelling.",
-      "Learn two phrases: \"C'est combien ?\" (How much is it?) and \"Ça coûte douze dollars.\" (It costs twelve dollars.)",
-      "Say out loud the prices of three of your ideas, e.g. \"Ça coûte huit dollars.\" Then tap Copy my week below and send it to Mom or Dad."
+      "Look at your streak and how many tasks you finished on this page.",
+      "Write: the task you liked most, and the one that felt hardest.",
+      "Mixed recall: 1) markup on $3 cost, $6 price? 2) What is a rain shadow? 3) Fix: \"Because I was tired.\"",
+      "Pick one thing you'll finish next week. Write it down.",
+      "Tap Copy my week below and send it to Mom or Dad.",
+      "Optional French bonus: write your winning business idea in one French sentence."
     ],
-    "check": "11 onze, 12 douze, 13 treize, 14 quatorze, 15 quinze, 16 seize, 17 dix-sept, 18 dix-huit, 19 dix-neuf, 20 vingt.",
-    "link": "https://www.youtube.com/watch?v=H2-REbL2OU0",
-    "linkText": "Learn French With Alexa: Numbers 1 to 20 (video)"
+    "small": "Tap Copy my week and send it.",
+    "check": "1) 100%. 2) The dry side of a mountain, where air has already dropped its rain. 3) e.g. \"I went to bed early because I was tired.\"",
+    "resources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Columbian_exchange",
+        "text": "Bonus: what moved between the Americas and Europe after 1492 (Wikipedia)"
+      }
+    ]
   }
 ]
