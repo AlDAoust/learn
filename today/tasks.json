@@ -1,6 +1,6 @@
 [
   {
-    "date": "2026-10-28",
+    "date": "2026-10-29",
     "track": "Side business",
     "level": "Level 1: Find ideas",
     "title": "List 10 things people pay for in areas you like",
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "track": "Math through finance",
     "level": "Level 1: Percentages",
     "title": "Work out profit, markup and margin",
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "date": "2026-10-30",
+    "date": "2026-10-31",
     "track": "Geography",
     "level": "Level 1: One region",
     "title": "Learn the map of South America",
@@ -61,7 +61,7 @@
       "Play the South America countries quiz once. Write down your score and time.",
       "Look at the landforms: the Andes run down the whole west side, the Amazon basin fills the north and middle, and the Atacama Desert runs along the coast of northern Chile.",
       "Play the quiz again and beat your first score or time.",
-      "Write one sentence with your guess: why might one side of a mountain range be wet and the other dry? You'll check it next Wednesday."
+      "Write one sentence with your guess: why might one side of a mountain range be wet and the other dry? You'll check it next Thursday."
     ],
     "small": "Play the quiz once and write your score.",
     "check": "You can place Brazil, Argentina, Chile, Peru and Colombia without help. The Atacama is in Chile.",
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "date": "2026-10-31",
+    "date": "2026-11-02",
     "track": "Investing",
     "level": "Level 1: Cash flow vs. investing",
     "title": "Cash flow vs. money that grows on its own",
@@ -104,7 +104,7 @@
     ]
   },
   {
-    "date": "2026-11-02",
+    "date": "2026-11-03",
     "track": "English grammar",
     "level": "Level 1: Full sentences",
     "title": "Fix sentence fragments",
@@ -131,7 +131,7 @@
     ]
   },
   {
-    "date": "2026-11-03",
+    "date": "2026-11-04",
     "track": "History",
     "level": "Level 1: Two sides of one event",
     "title": "The Spanish arrival in Peru: two points of view",
@@ -158,17 +158,17 @@
     ]
   },
   {
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "track": "Science",
     "level": "Level 1: Observe and explain",
     "title": "Why one side of a mountain is dry",
     "builds": "Explaining climate with cause and effect.",
     "minutes": 15,
     "steps": [
-      "Find the guess you wrote on Oct 30 about wet and dry mountain sides.",
+      "Find the guess you wrote on Oct 31 about wet and dry mountain sides.",
       "Read the rain shadow page (5 min).",
       "Draw it: ocean, wind, mountain. Show air rising, cooling, raining on one side, and dry air going down the other side.",
-      "Check your Oct 30 guess: right, partly right, or wrong? Write one line.",
+      "Check your Oct 31 guess: right, partly right, or wrong? Write one line.",
       "Tonight in a hot shower: watch the cold mirror. Write one line on how that's like a cloud forming."
     ],
     "small": "Draw the mountain picture only.",
@@ -185,7 +185,7 @@
     ]
   },
   {
-    "date": "2026-11-05",
+    "date": "2026-11-06",
     "track": "Side business",
     "level": "Level 2: Choose one",
     "title": "Score your 3 ideas with numbers",
@@ -208,7 +208,7 @@
     ]
   },
   {
-    "date": "2026-11-06",
+    "date": "2026-11-07",
     "track": "Math through finance",
     "level": "Level 1: Percentages",
     "title": "Discounts and percent change",
@@ -231,7 +231,7 @@
     ]
   },
   {
-    "date": "2026-11-07",
+    "date": "2026-11-09",
     "track": "Follow-through",
     "level": "Level 1: Look back",
     "title": "Your first look-back",
