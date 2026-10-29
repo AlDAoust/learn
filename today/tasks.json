@@ -1,6 +1,5 @@
 [
   {
-    "date": "2026-10-29",
     "track": "Side business",
     "level": "Level 1: Find ideas",
     "title": "List 10 things people pay for in areas you like",
@@ -20,17 +19,17 @@
         "url": "https://www.shopify.com/blog/side-hustle-ideas",
         "text": "Side hustle ideas (Shopify article)"
       }
-    ]
+    ],
+    "id": 1
   },
   {
-    "date": "2026-10-30",
     "track": "Math through finance",
     "level": "Level 1: Percentages",
     "title": "Work out profit, markup and margin",
     "builds": "Pricing your own idea so it actually makes money.",
     "minutes": 20,
     "steps": [
-      "Recall (1 min): without looking, write the 3 ideas you starred yesterday.",
+      "Recall (1 min): without looking, write the 3 ideas you starred in the last task.",
       "Worked example: it costs $2 to make and sells for $5. Profit = $3. Markup = profit ÷ cost = 3 ÷ 2 = 150%. Margin = profit ÷ price = 3 ÷ 5 = 60%.",
       "Your turn: a custom playlist costs you $4 per client and you charge $25. Find profit, markup and margin.",
       "Your turn: a budget template costs $0.50 per sale in fees and sells for $8. Same three numbers.",
@@ -47,10 +46,10 @@
         "url": "https://www.khanacademy.org/math/cc-sixth-grade-math/cc-6th-ratios-prop-topic/cc-6th-percent-problems/v/finding-percentages-example",
         "text": "Finding percentages (Khan Academy video)"
       }
-    ]
+    ],
+    "id": 2
   },
   {
-    "date": "2026-10-31",
     "track": "Geography",
     "level": "Level 1: One region",
     "title": "Learn the map of South America",
@@ -61,7 +60,7 @@
       "Play the South America countries quiz once. Write down your score and time.",
       "Look at the landforms: the Andes run down the whole west side, the Amazon basin fills the north and middle, and the Atacama Desert runs along the coast of northern Chile.",
       "Play the quiz again and beat your first score or time.",
-      "Write one sentence with your guess: why might one side of a mountain range be wet and the other dry? You'll check it next Thursday."
+      "Write one sentence with your guess: why might one side of a mountain range be wet and the other dry? You'll check it in a later task."
     ],
     "small": "Play the quiz once and write your score.",
     "check": "You can place Brazil, Argentina, Chile, Peru and Colombia without help. The Atacama is in Chile.",
@@ -74,10 +73,10 @@
         "url": "https://en.wikipedia.org/wiki/Geography_of_South_America",
         "text": "Geography of South America (Wikipedia)"
       }
-    ]
+    ],
+    "id": 3
   },
   {
-    "date": "2026-11-02",
     "track": "Investing",
     "level": "Level 1: Cash flow vs. investing",
     "title": "Cash flow vs. money that grows on its own",
@@ -101,10 +100,10 @@
         "url": "https://www.investopedia.com/terms/c/compoundinterest.asp",
         "text": "Compound interest (Investopedia article)"
       }
-    ]
+    ],
+    "id": 4
   },
   {
-    "date": "2026-11-03",
     "track": "English grammar",
     "level": "Level 1: Full sentences",
     "title": "Fix sentence fragments",
@@ -128,10 +127,10 @@
         "url": "https://www.grammarly.com/blog/sentences/sentence-fragment/",
         "text": "What is a sentence fragment? (Grammarly)"
       }
-    ]
+    ],
+    "id": 5
   },
   {
-    "date": "2026-11-04",
     "track": "History",
     "level": "Level 1: Two sides of one event",
     "title": "The Spanish arrival in Peru: two points of view",
@@ -155,20 +154,20 @@
         "url": "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Inca_Empire",
         "text": "Spanish conquest of the Inca Empire (Wikipedia)"
       }
-    ]
+    ],
+    "id": 6
   },
   {
-    "date": "2026-11-05",
     "track": "Science",
     "level": "Level 1: Observe and explain",
     "title": "Why one side of a mountain is dry",
     "builds": "Explaining climate with cause and effect.",
     "minutes": 15,
     "steps": [
-      "Find the guess you wrote on Oct 31 about wet and dry mountain sides.",
+      "Find the guess you wrote in the South America task about wet and dry mountain sides.",
       "Read the rain shadow page (5 min).",
       "Draw it: ocean, wind, mountain. Show air rising, cooling, raining on one side, and dry air going down the other side.",
-      "Check your Oct 31 guess: right, partly right, or wrong? Write one line.",
+      "Check your guess from the South America task: right, partly right, or wrong? Write one line.",
       "Tonight in a hot shower: watch the cold mirror. Write one line on how that's like a cloud forming."
     ],
     "small": "Draw the mountain picture only.",
@@ -182,10 +181,10 @@
         "url": "https://en.wikipedia.org/wiki/Atacama_Desert",
         "text": "Atacama Desert (Wikipedia)"
       }
-    ]
+    ],
+    "id": 7
   },
   {
-    "date": "2026-11-06",
     "track": "Side business",
     "level": "Level 2: Choose one",
     "title": "Score your 3 ideas with numbers",
@@ -205,10 +204,10 @@
         "url": "https://www.investopedia.com/terms/p/profitmargin.asp",
         "text": "Profit margin (Investopedia)"
       }
-    ]
+    ],
+    "id": 8
   },
   {
-    "date": "2026-11-07",
     "track": "Math through finance",
     "level": "Level 1: Percentages",
     "title": "Discounts and percent change",
@@ -228,10 +227,10 @@
         "url": "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-ratio-proportion/7th-percent-word-problems/v/percent-word-problems-tax-and-discount",
         "text": "Tax and discount problems (Khan Academy video)"
       }
-    ]
+    ],
+    "id": 9
   },
   {
-    "date": "2026-11-09",
     "track": "Follow-through",
     "level": "Level 1: Look back",
     "title": "Your first look-back",
@@ -252,6 +251,7 @@
         "url": "https://en.wikipedia.org/wiki/Columbian_exchange",
         "text": "Bonus: what moved between the Americas and Europe after 1492 (Wikipedia)"
       }
-    ]
+    ],
+    "id": 10
   }
 ]
